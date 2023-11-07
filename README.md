@@ -91,8 +91,3 @@ See [LICENSE.md](https://github.com/eea/volto-eea-slate-glossary/blob/master/LIC
 ## Funding
 
 [European Environment Agency (EU)](http://eea.europa.eu)
-
-
-## Funding
-
-[European Environment Agency (EU)](http://eea.europa.eu)
