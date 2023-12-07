@@ -1,5 +1,5 @@
 import { Popup } from 'semantic-ui-react';
-import { Icon } from '@plone/volto/components';
+import { Icon, UniversalLink } from '@plone/volto/components';
 import cx from 'classnames';
 import { GLOSSARYSVG } from './constants';
 import './style.less';
@@ -7,11 +7,11 @@ import './style.less';
 export const GlossaryPopupValue = (props) => {
   const { glossaryTerm } = props;
 
-  const glossaryTermJSON =
-    glossaryTerm !== undefined ? JSON.parse(glossaryTerm) : '';
+  const glossaryTermJSON = glossaryTerm ? JSON.parse(glossaryTerm) : '';
+  const glossaryTermSource = glossaryTermJSON['source'];
 
   return glossaryTermJSON ? (
-    <div>
+    <div className="glossary-popup">
       <div>
         <b>{glossaryTermJSON['term']}</b>
       </div>
@@ -20,11 +20,19 @@ export const GlossaryPopupValue = (props) => {
         <span>
           <b>Source: </b>
         </span>
-        <span>{glossaryTermJSON['source']}</span>
+        {glossaryTermSource.startsWith('http') ? (
+          <UniversalLink href={glossaryTermSource} openLinkInNewTab={true}>
+            {glossaryTermSource}
+          </UniversalLink>
+        ) : (
+          glossaryTermSource
+        )}
       </div>
     </div>
   ) : (
-    ''
+    <div className="glossary-popup">
+      <i>No term selected </i>
+    </div>
   );
 };
 
@@ -34,6 +42,8 @@ export const GlossaryElement = (props) => {
   const { uid, popup_position } = data;
 
   const glossaryTerm = data?.glossary_term || '';
+  const glossaryTermJSON = glossaryTerm ? JSON.parse(glossaryTerm) : '';
+  const glossaryTermSource = glossaryTermJSON['source'] || '';
 
   return (
     <>
@@ -43,18 +53,41 @@ export const GlossaryElement = (props) => {
             position={popup_position}
             on="hover"
             trigger={
-              <span
-                id={`label_ref-${uid}`}
-                {...attributes}
-                className={cx(popup_position, 'slate-popup-item glossary-item')}
-              >
-                {children}
-                <Icon
-                  name={GLOSSARYSVG}
-                  size="14px"
-                  className="glossary-icon"
-                />
-              </span>
+              glossaryTermSource.startsWith('http') ? (
+                <UniversalLink
+                  href={glossaryTermSource}
+                  openLinkInNewTab={true}
+                  id={`label_ref-${uid}`}
+                  {...attributes}
+                  className={cx(
+                    popup_position,
+                    'slate-popup-item glossary-item',
+                  )}
+                >
+                  {children}
+                  <Icon
+                    name={GLOSSARYSVG}
+                    size="14px"
+                    className="glossary-icon"
+                  />
+                </UniversalLink>
+              ) : (
+                <span
+                  id={`label_ref-${uid}`}
+                  {...attributes}
+                  className={cx(
+                    popup_position,
+                    'slate-popup-item glossary-item',
+                  )}
+                >
+                  {children}
+                  <Icon
+                    name={GLOSSARYSVG}
+                    size="14px"
+                    className="glossary-icon"
+                  />
+                </span>
+              )
             }
             className={popup_position}
           >

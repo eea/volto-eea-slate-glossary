@@ -102,10 +102,20 @@ const Option = injectLazyLibs('reactSelect')((props) => {
   const svgIcon =
     props.isFocused || props.isSelected ? checkSVG : checkBlankSVG;
 
+  let glossaryTerm = props.label;
+  let glossaryTermJSON =
+    glossaryTerm !== undefined ? JSON.parse(glossaryTerm) : '';
+  const definition = glossaryTermJSON['definition'];
+  glossaryTermJSON['definition'] =
+    definition.length > 200
+      ? glossaryTermJSON['definition'].substring(0, 200) + '...'
+      : definition;
+  glossaryTerm = JSON.stringify(glossaryTermJSON);
+
   return (
     <Option {...props}>
       <div>
-        <GlossaryPopupValue glossaryTerm={props.label} />
+        <GlossaryPopupValue glossaryTerm={glossaryTerm} />
       </div>
       <Icon name={svgIcon} size="20px" color={color} />
     </Option>
