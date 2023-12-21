@@ -12,7 +12,7 @@ pipeline {
     SONARQUBE_TAGS = "volto.eea.europa.eu"
     DEPENDENCIES = ""
     BACKEND_PROFILES = "eea.kitkat:testing"
-    BACKEND_ADDONS = ""
+    BACKEND_ADDONS = "eea.api.glossary"
     VOLTO = "16"
     IMAGE_NAME = BUILD_TAG.toLowerCase()
   }
