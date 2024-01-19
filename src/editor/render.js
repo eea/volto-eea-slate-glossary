@@ -23,6 +23,10 @@ export const GlossaryPopupValue = (props) => {
           </span>
           <ul>
             {glossaryTermSource.map((source) => {
+              const displayTitle = source['organisation']
+                ? source['title'] + ', ' + source['organisation']
+                : source['title'];
+
               return (
                 <li>
                   {source['link'] ? (
@@ -30,10 +34,10 @@ export const GlossaryPopupValue = (props) => {
                       href={source['link']}
                       openLinkInNewTab={true}
                     >
-                      {source['title']}, {source['organization']}
+                      {displayTitle}
                     </UniversalLink>
                   ) : (
-                    source['title'] + ', ' + source['organization']
+                    displayTitle
                   )}
                 </li>
               );
