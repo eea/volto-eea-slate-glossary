@@ -8,7 +8,7 @@ export const GlossaryPopupValue = (props) => {
   const { glossaryTerm } = props;
 
   const glossaryTermJSON = glossaryTerm ? JSON.parse(glossaryTerm) : '';
-  const glossaryTermSource = glossaryTermJSON['source'];
+  const glossaryTermSource = glossaryTermJSON['sources'] || [];
 
   return glossaryTermJSON ? (
     <div className="glossary-popup">
@@ -16,18 +16,37 @@ export const GlossaryPopupValue = (props) => {
         <b>{glossaryTermJSON['term']}</b>
       </div>
       <div>{glossaryTermJSON['definition']}</div>
-      <div>
-        <span>
-          <b>Source: </b>
-        </span>
-        {glossaryTermSource.startsWith('http') ? (
-          <UniversalLink href={glossaryTermSource} openLinkInNewTab={true}>
-            {glossaryTermSource}
-          </UniversalLink>
-        ) : (
-          glossaryTermSource
-        )}
-      </div>
+      {glossaryTermSource ? (
+        <div>
+          <span>
+            <b>Sources: </b>
+          </span>
+          <ul>
+            {glossaryTermSource.map((source) => {
+              const displayTitle = source['organisation']
+                ? source['title'] + ', ' + source['organisation']
+                : source['title'];
+
+              return (
+                <li>
+                  {source['link'] ? (
+                    <UniversalLink
+                      href={source['link']}
+                      openLinkInNewTab={true}
+                    >
+                      {displayTitle}
+                    </UniversalLink>
+                  ) : (
+                    displayTitle
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      ) : (
+        ''
+      )}
     </div>
   ) : (
     <div className="glossary-popup">
@@ -42,8 +61,8 @@ export const GlossaryElement = (props) => {
   const { uid, popup_position } = data;
 
   const glossaryTerm = data?.glossary_term || '';
-  const glossaryTermJSON = glossaryTerm ? JSON.parse(glossaryTerm) : '';
-  const glossaryTermSource = glossaryTermJSON['source'] || '';
+  // const glossaryTermJSON = glossaryTerm ? JSON.parse(glossaryTerm) : '';
+  // const glossaryTermSource = glossaryTermJSON['sources'] || {};
 
   return (
     <>
@@ -51,43 +70,20 @@ export const GlossaryElement = (props) => {
         <span id={`ref-${uid}`} aria-describedby="slate-label">
           <Popup
             position={popup_position}
-            on="hover"
+            on="click"
             trigger={
-              glossaryTermSource.startsWith('http') ? (
-                <UniversalLink
-                  href={glossaryTermSource}
-                  openLinkInNewTab={true}
-                  id={`label_ref-${uid}`}
-                  {...attributes}
-                  className={cx(
-                    popup_position,
-                    'slate-popup-item glossary-item',
-                  )}
-                >
-                  {children}
-                  <Icon
-                    name={GLOSSARYSVG}
-                    size="14px"
-                    className="glossary-icon"
-                  />
-                </UniversalLink>
-              ) : (
-                <span
-                  id={`label_ref-${uid}`}
-                  {...attributes}
-                  className={cx(
-                    popup_position,
-                    'slate-popup-item glossary-item',
-                  )}
-                >
-                  {children}
-                  <Icon
-                    name={GLOSSARYSVG}
-                    size="14px"
-                    className="glossary-icon"
-                  />
-                </span>
-              )
+              <span
+                id={`label_ref-${uid}`}
+                {...attributes}
+                className={cx(popup_position, 'slate-popup-item glossary-item')}
+              >
+                {children}
+                <Icon
+                  name={GLOSSARYSVG}
+                  size="14px"
+                  className="glossary-icon"
+                />
+              </span>
             }
             className={popup_position}
           >
