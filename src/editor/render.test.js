@@ -74,7 +74,7 @@ describe('GlossaryPopupValue', () => {
         {
           link: 'http://testsource.com',
           organisation: 'Test Organisation',
-          title: 'Test source',
+          title: 'Test Source',
         },
       ],
     });
@@ -86,7 +86,7 @@ describe('GlossaryPopupValue', () => {
     expect(screen.getByText('Test Term')).toBeInTheDocument();
     expect(screen.getByText('Test Definition')).toBeInTheDocument();
     expect(
-      screen.getByRole('link', { name: 'http://testsource.com' }),
+      screen.getByRole('link', { name: 'Test Source, Test Organisation' }),
     ).toHaveAttribute('href', 'http://testsource.com');
   });
 
@@ -107,7 +107,7 @@ describe('GlossaryPopupValue', () => {
         {
           link: '',
           organisation: 'Test Organisation',
-          title: 'Test source',
+          title: 'Test Source',
         },
       ],
     });
@@ -118,7 +118,7 @@ describe('GlossaryPopupValue', () => {
     );
     expect(screen.getByText('Test Source')).toBeInTheDocument();
     expect(
-      screen.queryByRole('link', { name: 'Test Source' }),
+      screen.queryByRole('link', { name: 'Test Source, Test Organisation' }),
     ).not.toBeInTheDocument();
   });
 });
