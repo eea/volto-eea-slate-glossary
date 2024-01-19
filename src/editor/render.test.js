@@ -18,7 +18,11 @@ describe('GlossaryPopupValue', () => {
     const validGlossaryTerm = JSON.stringify({
       term: 'Test Term',
       definition: 'Test Definition',
-      source: 'http://testsource.com',
+      sources: {
+        link: 'http://testsource.com',
+        organisation: 'Test Organisation',
+        title: 'Test source',
+      },
     });
     const { getByText } = render(
       <Provider store={store}>
@@ -34,7 +38,11 @@ describe('GlossaryPopupValue', () => {
     const validGlossaryTerm = JSON.stringify({
       term: 'Test Term',
       definition: 'Test Definition',
-      source: 'www.testsource.com',
+      sources: {
+        link: 'www.testsource.com',
+        organisation: 'Test Organisation',
+        title: 'Test source',
+      },
     });
     const { getByText } = render(
       <Provider store={store}>
@@ -105,7 +113,11 @@ describe('GlossaryElement', () => {
               glossary_term: JSON.stringify({
                 term: 'Test Term',
                 definition: 'Test Definition',
-                source: 'www.testsource.com',
+                sources: {
+                  link: 'http://testsource.com',
+                  organisation: 'Test Organisation',
+                  title: 'Test source',
+                },
               }),
               popup_position: 'top left',
             },
