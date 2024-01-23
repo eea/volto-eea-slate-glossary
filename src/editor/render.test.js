@@ -5,6 +5,19 @@ import { GlossaryElement, GlossaryPopupValue } from './render';
 import configureStore from 'redux-mock-store';
 import '@testing-library/jest-dom/extend-expect';
 
+jest.mock('semantic-ui-react', () => ({
+  ...jest.requireActual('semantic-ui-react'),
+  Popup: ({ content, trigger, children }) => {
+    return (
+      <div className="popup">
+        <div className="trigger">{trigger}</div>
+        <div className="content">{content}</div>
+        {children}
+      </div>
+    );
+  },
+}));
+
 const mockStore = configureStore([]);
 
 const store = mockStore({
@@ -47,6 +60,7 @@ describe('GlossaryElement', () => {
         />
       </Provider>,
     );
+    screen.debug();
     expect(
       container.querySelector('a[href="http://testsource.com"]'),
     ).toBeInTheDocument();
@@ -116,7 +130,9 @@ describe('GlossaryPopupValue', () => {
         <GlossaryPopupValue glossaryTerm={glossaryTerm} />
       </Provider>,
     );
-    expect(screen.getByText('Test Source')).toBeInTheDocument();
+    expect(
+      screen.getByText('Test Source, Test Organisation'),
+    ).toBeInTheDocument();
     expect(
       screen.queryByRole('link', { name: 'Test Source, Test Organisation' }),
     ).not.toBeInTheDocument();
