@@ -60,7 +60,6 @@ describe('GlossaryElement', () => {
         />
       </Provider>,
     );
-    screen.debug();
     expect(
       container.querySelector('a[href="http://testsource.com"]'),
     ).toBeInTheDocument();
