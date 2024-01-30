@@ -11,11 +11,11 @@ export const GlossaryPopupValue = (props) => {
   const glossaryTermSource = glossaryTermJSON['sources'] || [];
 
   return glossaryTermJSON ? (
-    <div className="glossary-popup">
+    <div>
       <div>
         <b>{glossaryTermJSON['term']}</b>
       </div>
-      <div>{glossaryTermJSON['definition']}</div>
+      <p>{glossaryTermJSON['definition']}</p>
       {glossaryTermSource ? (
         <div>
           <span>
@@ -49,7 +49,7 @@ export const GlossaryPopupValue = (props) => {
       )}
     </div>
   ) : (
-    <div className="glossary-popup">
+    <div>
       <i>No term selected </i>
     </div>
   );
@@ -69,7 +69,9 @@ export const GlossaryElement = (props) => {
       {mode === 'view' ? (
         <span id={`ref-${uid}`} aria-describedby="slate-label">
           <Popup
+            className="glossary-popup"
             position={popup_position}
+            offset={[0, 0]}
             on="click"
             trigger={
               <span
@@ -85,7 +87,6 @@ export const GlossaryElement = (props) => {
                 />
               </span>
             }
-            className={popup_position}
           >
             <GlossaryPopupValue
               glossaryTerm={glossaryTerm ? glossaryTerm : ''}

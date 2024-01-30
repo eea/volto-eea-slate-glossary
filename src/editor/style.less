@@ -6,13 +6,26 @@
   vertical-align: top;
 }
 
-.glossary-popup {
+.ui.popup.glossary-popup {
   width: max-content;
-  max-width: 30vw;
+  max-width: 550px;
   font-size: 14px;
+  padding: 1em;
 
   ul {
-    margin: 0px;
+    margin: 0;
     padding-inline-start: 20px;
+  }
+
+  @media only screen and (max-width: 580px) {
+    max-width: 450px;
+  }
+
+  @media only screen and (max-width: 450px) {
+    max-width: 320px;
+  }
+
+  @media only screen and (max-width: 320px) {
+    max-width: 280px;
   }
 }
