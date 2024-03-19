@@ -29,9 +29,8 @@ describe('install', () => {
 
   it('returns true when formData is truthy', () => {
     const mockConfig = { settings: { slate: {} } };
-    const [
-      installGlossaryEditor,
-    ] = makeInlineElementPlugin.mock.results[0].value;
+    const [installGlossaryEditor] =
+      makeInlineElementPlugin.mock.results[0].value;
     installGlossaryEditor(mockConfig);
 
     const opts = makeInlineElementPlugin.mock.calls[0][0];
@@ -41,9 +40,8 @@ describe('install', () => {
 
   it('returns false when formData is falsy', () => {
     const mockConfig = { settings: { slate: {} } };
-    const [
-      installGlossaryEditor,
-    ] = makeInlineElementPlugin.mock.results[0].value;
+    const [installGlossaryEditor] =
+      makeInlineElementPlugin.mock.results[0].value;
     installGlossaryEditor(mockConfig);
 
     const opts = makeInlineElementPlugin.mock.calls[0][0];
