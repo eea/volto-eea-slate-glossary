@@ -1,21 +1,46 @@
+import { useState } from 'react';
 import { Popup } from 'semantic-ui-react';
 import { Icon, UniversalLink } from '@plone/volto/components';
 import cx from 'classnames';
 import { GLOSSARYSVG } from './constants';
 import './style.less';
 
+const DEFINITION_LIMIT = 1000;
+
 export const GlossaryPopupValue = (props) => {
   const { glossaryTerm } = props;
 
   const glossaryTermJSON = glossaryTerm ? JSON.parse(glossaryTerm) : '';
+  const isLongDefinition =
+    glossaryTermJSON &&
+    glossaryTermJSON['definition'].length > DEFINITION_LIMIT;
   const glossaryTermSource = glossaryTermJSON['sources'] || [];
+  const [showFullDefinition, setShowFullDefinition] = useState(false);
 
   return glossaryTermJSON ? (
     <div>
       <div>
         <b>{glossaryTermJSON['term']}</b>
       </div>
-      <p>{glossaryTermJSON['definition']}</p>
+      {!isLongDefinition ? (
+        <p>{glossaryTermJSON['definition']}</p>
+      ) : (
+        <p>
+          {showFullDefinition
+            ? glossaryTermJSON['definition']
+            : glossaryTermJSON['definition'].substring(0, DEFINITION_LIMIT) +
+              '...'}
+          <button
+            className="ui basic icon button small show-more"
+            onClick={(e) => {
+              setShowFullDefinition(!showFullDefinition);
+            }}
+          >
+            {showFullDefinition ? 'Show less' : 'Show more'}
+          </button>
+        </p>
+      )}
+
       {glossaryTermSource ? (
         <div>
           <span>
