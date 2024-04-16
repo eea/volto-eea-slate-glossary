@@ -11,37 +11,36 @@ export const GlossaryPopupValue = (props) => {
   const { glossaryTerm } = props;
 
   const glossaryTermJSON = glossaryTerm ? JSON.parse(glossaryTerm) : '';
+  const isLongDefinition =
+    glossaryTermJSON &&
+    glossaryTermJSON['definition'].length > DEFINITION_LIMIT;
   const glossaryTermSource = glossaryTermJSON['sources'] || [];
-  const [showFullDefinition, setShowFullDefinition] = useState(true);
-
-  useEffect(() => {
-    if (
-      glossaryTermJSON &&
-      glossaryTermJSON['definition'].length > DEFINITION_LIMIT
-    ) {
-      setShowFullDefinition(false);
-    }
-  }, []);
+  const [showFullDefinition, setShowFullDefinition] = useState(false);
 
   return glossaryTermJSON ? (
     <div>
       <div>
         <b>{glossaryTermJSON['term']}</b>
       </div>
-      <p>
-        {showFullDefinition
-          ? glossaryTermJSON['definition']
-          : glossaryTermJSON['definition'].substring(0, DEFINITION_LIMIT) +
-            '...'}
-        <button
-          className="ui basic icon button small show-more"
-          onClick={(e) => {
-            setShowFullDefinition(!showFullDefinition);
-          }}
-        >
-          {showFullDefinition ? 'Show less' : 'Show more'}
-        </button>
-      </p>
+      {!isLongDefinition ? (
+        <p>{glossaryTermJSON['definition']}</p>
+      ) : (
+        <p>
+          {showFullDefinition
+            ? glossaryTermJSON['definition']
+            : glossaryTermJSON['definition'].substring(0, DEFINITION_LIMIT) +
+              '...'}
+          <button
+            className="ui basic icon button small show-more"
+            onClick={(e) => {
+              setShowFullDefinition(!showFullDefinition);
+            }}
+          >
+            {showFullDefinition ? 'Show less' : 'Show more'}
+          </button>
+        </p>
+      )}
+
       {glossaryTermSource ? (
         <div>
           <span>
