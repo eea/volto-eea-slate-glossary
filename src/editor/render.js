@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Popup } from 'semantic-ui-react';
 import { Icon, UniversalLink } from '@plone/volto/components';
 import cx from 'classnames';
