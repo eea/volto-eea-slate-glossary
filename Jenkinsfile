@@ -9,7 +9,7 @@ pipeline {
   environment {
     GIT_NAME = "volto-eea-slate-glossary"
     NAMESPACE = "@eeacms"
-    SONARQUBE_TAGS = "volto.eea.europa.eu,water.europa.eu-freshwater"
+    SONARQUBE_TAGS = "volto.eea.europa.eu,water.europa.eu-freshwater,forest.eea.europa.eu"
     DEPENDENCIES = ""
     BACKEND_PROFILES = "eea.kitkat:testing"
     BACKEND_ADDONS = "eea.api.glossary"
