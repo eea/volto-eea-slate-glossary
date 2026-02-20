@@ -3,16 +3,16 @@
 [![Releases](https://img.shields.io/github/v/release/eea/volto-eea-slate-glossary)](https://github.com/eea/volto-eea-slate-glossary/releases)
 
 [![Pipeline](https://ci.eionet.europa.eu/buildStatus/icon?job=volto-addons%2Fvolto-eea-slate-glossary%2Fmaster&subject=master)](https://ci.eionet.europa.eu/view/Github/job/volto-addons/job/volto-eea-slate-glossary/job/master/display/redirect)
-[![Lines of Code](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-eea-slate-glossary-master&metric=ncloc)](https://sonarqube.eea.europa.eu/dashboard?id=volto-eea-slate-glossary-master)
-[![Coverage](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-eea-slate-glossary-master&metric=coverage)](https://sonarqube.eea.europa.eu/dashboard?id=volto-eea-slate-glossary-master)
-[![Bugs](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-eea-slate-glossary-master&metric=bugs)](https://sonarqube.eea.europa.eu/dashboard?id=volto-eea-slate-glossary-master)
-[![Duplicated Lines (%)](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-eea-slate-glossary-master&metric=duplicated_lines_density)](https://sonarqube.eea.europa.eu/dashboard?id=volto-eea-slate-glossary-master)
+[![Lines of Code](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-eea-slate-glossary&metric=ncloc)](https://sonarqube.eea.europa.eu/dashboard?id=volto-eea-slate-glossary)
+[![Coverage](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-eea-slate-glossary&metric=coverage)](https://sonarqube.eea.europa.eu/dashboard?id=volto-eea-slate-glossary)
+[![Bugs](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-eea-slate-glossary&metric=bugs)](https://sonarqube.eea.europa.eu/dashboard?id=volto-eea-slate-glossary)
+[![Duplicated Lines (%)](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-eea-slate-glossary&metric=duplicated_lines_density)](https://sonarqube.eea.europa.eu/dashboard?id=volto-eea-slate-glossary)
 
 [![Pipeline](https://ci.eionet.europa.eu/buildStatus/icon?job=volto-addons%2Fvolto-eea-slate-glossary%2Fdevelop&subject=develop)](https://ci.eionet.europa.eu/view/Github/job/volto-addons/job/volto-eea-slate-glossary/job/develop/display/redirect)
-[![Lines of Code](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-eea-slate-glossary-develop&metric=ncloc)](https://sonarqube.eea.europa.eu/dashboard?id=volto-eea-slate-glossary-develop)
-[![Coverage](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-eea-slate-glossary-develop&metric=coverage)](https://sonarqube.eea.europa.eu/dashboard?id=volto-eea-slate-glossary-develop)
-[![Bugs](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-eea-slate-glossary-develop&metric=bugs)](https://sonarqube.eea.europa.eu/dashboard?id=volto-eea-slate-glossary-develop)
-[![Duplicated Lines (%)](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-eea-slate-glossary-develop&metric=duplicated_lines_density)](https://sonarqube.eea.europa.eu/dashboard?id=volto-eea-slate-glossary-develop)
+[![Lines of Code](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-eea-slate-glossary&branch=develop&metric=ncloc)](https://sonarqube.eea.europa.eu/dashboard?id=volto-eea-slate-glossary&branch=develop)
+[![Coverage](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-eea-slate-glossary&branch=develop&metric=coverage)](https://sonarqube.eea.europa.eu/dashboard?id=volto-eea-slate-glossary&branch=develop)
+[![Bugs](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-eea-slate-glossary&branch=develop&metric=bugs)](https://sonarqube.eea.europa.eu/dashboard?id=volto-eea-slate-glossary&branch=develop)
+[![Duplicated Lines (%)](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-eea-slate-glossary&branch=develop&metric=duplicated_lines_density)](https://sonarqube.eea.europa.eu/dashboard?id=volto-eea-slate-glossary&branch=develop)
 
 
 [Volto](https://github.com/plone/volto) add-on
