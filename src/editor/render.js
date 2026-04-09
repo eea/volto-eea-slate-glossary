@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Popup } from 'semantic-ui-react';
-import { Icon, UniversalLink } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 import cx from 'classnames';
 import { GLOSSARYSVG } from './constants';
 import './style.less';
