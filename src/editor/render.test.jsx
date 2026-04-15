@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-intl-redux';
 import { GlossaryElement, GlossaryPopupValue } from './render';
 import configureStore from 'redux-mock-store';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 
 jest.mock('semantic-ui-react', () => ({
   ...jest.requireActual('semantic-ui-react'),
