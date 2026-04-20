@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Popup } from 'semantic-ui-react';
-import { Icon, UniversalLink } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 import cx from 'classnames';
 import { GLOSSARYSVG } from './constants';
 import './style.less';
@@ -47,13 +48,13 @@ export const GlossaryPopupValue = (props) => {
             <b>Sources: </b>
           </span>
           <ul>
-            {glossaryTermSource.map((source) => {
+            {glossaryTermSource.map((source, index) => {
               const displayTitle = source['organisation']
                 ? source['title'] + ', ' + source['organisation']
                 : source['title'];
 
               return (
-                <li>
+                <li key={index}>
                   {source['link'] ? (
                     <UniversalLink
                       href={source['link']}
